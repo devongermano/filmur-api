@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: filmur-api
+spec:
+  replicas: 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: filmur-api
+    spec:
+      containers:
+        - image: gcr.io/filmur-development/filmur-api:latest # this probably wont work
+          imagePullPolicy: Always
+          name: filmur-api
+          ports:
+            - containerPort: 80
