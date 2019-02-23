@@ -1,0 +1,15 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  id: Build Filmur-API
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/filmur-api', '.' ]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Push Filmur-API Image
+  args: ['push', 'gcr.io/$PROJECT_ID/filmur-api']
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Deploy Filmur-API
+  args: [ 'apply', '-f', 'kubernetes/deployment.yaml' ]
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=filmur-development'
