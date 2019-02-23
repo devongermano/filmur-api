@@ -1,4 +1,4 @@
-FROM gradle:jdk10 as builder
+FROM gradle:jdk10
 VOLUME /tmp
 RUN gradle build
 RUN ls -al
