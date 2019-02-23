@@ -1,5 +1,7 @@
 FROM gradle:jdk10
-VOLUME /tmp
+RUN ls -al
+RUN cd ..
+RUN ls -al
 RUN gradle build
 RUN ls -al
 COPY build/libs/filmur-api-0.0.1-SNAPSHOT.jar api.jar
