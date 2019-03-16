@@ -19,7 +19,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 class SecurityConfig : WebSecurityConfigurerAdapter() {
     @Value(value = "\${auth0.apiAudience}")
     private val apiAudience: String? = null
-    @Value(value = "\${auth0.issuer}")
+    @Value(value = "\${auth0.url.base}")
     private val issuer: String? = null
 
     @Bean

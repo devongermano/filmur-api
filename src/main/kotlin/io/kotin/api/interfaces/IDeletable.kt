@@ -1,4 +1,4 @@
-package io.kotin.api.models
+package io.kotin.api.interfaces
 
 import java.util.*
 

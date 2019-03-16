@@ -1,0 +1,23 @@
+{
+  "auth0": {
+    "clientID": "6WlcCfKxOSSDCH9Ek07UwMCKrwJ3s4Yr",
+    "domain": "filmur-dev.auth0.com",
+    "redirectUrl": "https://filmur.io/callback",
+    "audience": {
+      "management": "https://filmur-dev.auth0.com/api/v2/"
+    }
+  },
+  "filmur": {
+    "api": "api.filmur.io",
+    "transcode": "transcode.filmur.io",
+    "web": "filmur.io"
+  },
+  "mongodb": {
+    "host": "",
+    "port": "",
+    "database": "",
+    "username": "",
+    "password": "",
+    "authenticationDatabase": ""
+  }
+}

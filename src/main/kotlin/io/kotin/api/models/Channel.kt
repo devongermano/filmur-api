@@ -1,6 +1,8 @@
 package io.kotin.api.models
 
 import com.fasterxml.jackson.annotation.JsonCreator
+import io.kotin.api.interfaces.IBase
+import io.kotin.api.interfaces.IDeletable
 import java.util.*
 
 data class NewChannel @JsonCreator constructor(
