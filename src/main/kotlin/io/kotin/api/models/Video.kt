@@ -1,17 +1,12 @@
 package io.kotin.api.models
 
-import com.fasterxml.jackson.annotation.JsonCreator
 import io.kotin.api.interfaces.IBase
 import io.kotin.api.interfaces.IDeletable
+import org.springframework.data.annotation.Id
 import java.util.*
 
-data class NewVideo @JsonCreator constructor(
-        val title: String,
-        val description: String
-)
-
 data class Video(
-        override val id: Number,
+        @Id override var id: String? = null,
         override val dateCreated: Date,
         override val dateModified: Date,
         override val deleted: Boolean = false,

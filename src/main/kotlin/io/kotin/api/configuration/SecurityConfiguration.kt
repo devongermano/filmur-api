@@ -1,7 +1,7 @@
-package io.kotin.api
+package io.kotin.api.configuration
 
 import com.auth0.spring.security.api.JwtWebSecurityConfigurer
-import org.springframework.beans.factory.annotation.Value
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
@@ -16,11 +16,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 @Configuration
 @EnableWebSecurity(debug = true)
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-class SecurityConfig : WebSecurityConfigurerAdapter() {
-    @Value(value = "\${auth0.apiAudience}")
-    private val apiAudience: String? = null
-    @Value(value = "\${auth0.url.base}")
-    private val issuer: String? = null
+class SecurityConfiguration : WebSecurityConfigurerAdapter() {
+
+    @Autowired
+    lateinit var appConfiguration: AppConfiguration;
 
     @Bean
     fun corsConfigurationSource(): CorsConfigurationSource {
@@ -37,9 +36,9 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         JwtWebSecurityConfigurer
-                .forRS256(apiAudience, issuer!!)
+                .forRS256(appConfiguration.auth0.audience, appConfiguration.auth0.endpoint.base)
                 .configure(http)
                 .authorizeRequests()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
     }
 }

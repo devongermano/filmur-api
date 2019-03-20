@@ -29,11 +29,15 @@ repositories {
 }
 
 dependencies {
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.8'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 	implementation "org.jetbrains.kotlin:kotlin-reflect"
 	implementation 'com.auth0:auth0-spring-security-api:1.2.1'
 	implementation 'org.springframework.boot:spring-boot-configuration-processor'
+	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+	implementation 'org.mongodb:mongodb-driver-sync:3.10.1'
+	implementation 'org.springframework.data:spring-data-mongodb'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

@@ -1,18 +1,14 @@
 package io.kotin.api.models
 
-import com.fasterxml.jackson.annotation.JsonCreator
 import io.kotin.api.interfaces.IBase
 import io.kotin.api.interfaces.IDeletable
+import org.springframework.data.annotation.Id
 import java.util.*
 
-data class NewChannel @JsonCreator constructor(
-        val name: String
-)
-
 data class Channel(
-        override val id: Number,
-        val name: String,
+        @Id override var id: String? = null,
         override val dateCreated: Date,
         override val dateModified: Date,
         override val deleted: Boolean = false,
-        override val dateDeleted: Date?) : IBase, IDeletable
+        override val dateDeleted: Date?,
+        val name: String) : IBase, IDeletable

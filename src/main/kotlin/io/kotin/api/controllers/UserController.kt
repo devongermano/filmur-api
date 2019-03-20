@@ -1,28 +1,35 @@
 package io.kotin.api.controllers
 
+import io.kotin.api.models.NewUser
+import io.kotin.api.models.User
+import io.kotin.api.respositories.UserRepository
 import io.kotin.api.services.UserService
+import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.client.RestTemplate
 
 
 @RestController
+@RequestMapping("/user")
 class UserController {
 
     @Autowired
     lateinit var userService: UserService;
 
+    @GetMapping("/{userId}")
+    fun get(@PathVariable(value="userId") userId: String): User {
+        return this.userService.get(userId)
+    }
 
-    // Get the user by idap
-//    @GetMapping()
-//    fun get(auth: Authentication) {
-//        // If the AuthUserId is
-//        if (auth.principal == ) return this.get();
-//    }
-//
     @PostMapping()
-    fun create() {
+    fun create(@RequestBody newUser: NewUser): User {
+        return this.userService.create(newUser)
+    }
 
+    @PutMapping()
+    fun update(@RequestBody user: User): User {
+        return this.userService.update(user);
     }
 }
 
