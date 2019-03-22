@@ -12,10 +12,10 @@ data class Auth0TokenRequest @JsonCreator constructor(
 
     companion object {
         fun fromConfiguration(appConfiguration: AppConfiguration): Auth0TokenRequest {
-            return Auth0TokenRequest(appConfiguration.auth0.grant_type,
-                                        appConfiguration.auth0.client_id,
-                                        appConfiguration.auth0.client_secret,
-                                        appConfiguration.auth0.audience)
+            return Auth0TokenRequest(appConfiguration.auth0.management.grant_type,
+                                        appConfiguration.auth0.management.client_id,
+                                        appConfiguration.auth0.management.client_secret,
+                                        appConfiguration.auth0.management.audience)
         }
     }
 }

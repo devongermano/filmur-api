@@ -15,16 +15,26 @@ class AppConfiguration {
 
         class Auth0Properties {
             var endpoint: Auth0EndpointProperties = Auth0EndpointProperties()
-            lateinit var grant_type: String;
-            lateinit var client_id: String;
-            lateinit var client_secret: String;
-            lateinit var audience: String
+            var web: Auth0WebProperties = Auth0WebProperties()
+            var management: Auth0ManagementProperties = Auth0ManagementProperties()
         }
 
         class Auth0EndpointProperties {
             lateinit var base: String
             lateinit var token: String
             lateinit var users: String
+        }
+
+        class Auth0ManagementProperties {
+            lateinit var grant_type: String;
+            lateinit var client_id: String;
+            lateinit var client_secret: String;
+            lateinit var audience: String
+        }
+
+        class Auth0WebProperties {
+            lateinit var client_id: String;
+            lateinit var issuer: String
         }
     }
 }

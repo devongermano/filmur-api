@@ -36,9 +36,9 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         JwtWebSecurityConfigurer
-                .forRS256(appConfiguration.auth0.audience, appConfiguration.auth0.endpoint.base)
+                .forRS256(appConfiguration.auth0.web.client_id, appConfiguration.auth0.web.issuer)
                 .configure(http)
-                .authorizeRequests()
-                .anyRequest().permitAll()
+                .cors().and().csrf().disable().authorizeRequests()
+                .anyRequest().permitAll();
     }
 }
